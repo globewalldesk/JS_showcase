@@ -1,0 +1,52 @@
+/* MEDIA QUERIES ARE COOL */
+/* Tiny devices */
+@media (min-width: 200px) {
+  .navbar-brand {
+    font-size: 14px; }
+    .navbar-brand small {
+      font-size: 10px; }
+
+  .hidden-xs {
+    display: none; } }
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .navbar-brand {
+    font-size: inherit; }
+    .navbar-brand small {
+      font-size: inherit; }
+
+  .hidden-xs {
+    display: inline; } }
+/* Medium devices (desktops, 992px and up) */
+/* Large devices (large desktops, 1200px and up) */
+/* TOP OF PAGE STUFF */
+.jumbotron {
+  padding: 5px; }
+
+.navbar .navbar-brand {
+  color: #eeeeee; }
+.navbar span {
+  color: #c1d2ee;
+  font-size: .8em; }
+
+#box-row {
+  margin: 8px 4px;
+  padding: 4px 8px;
+  border: 1px solid grey; }
+  #box-row .box {
+    margin: 8px 0px;
+    padding: 4px 8px;
+    border: 1px solid lightgray;
+    list-style: none;
+    word-break: break-all; }
+  #box-row #code-box {
+    font-size: 0.8em;
+    font-family: "Courier New", sans-serif; }
+
+/* EDIT BOXES ETC. */
+.edit-box {
+  margin: 8px 0 0 0;
+  padding: 4px 8px;
+  cursor: pointer; }
+
+/*# sourceMappingURL=showcase.css.map */
