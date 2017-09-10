@@ -14,12 +14,10 @@ function load_present_file_for_code_reporter() {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         // What line ending to split on depends on the OS.
-        if (navigator.appVersion.indexOf("Win") !== -1) {
+        if (xhr.responseText.match("\r\n")) {
           this_file = xhr.responseText.split("\r\n");
-        } else if (navigator.appVersion.indexOf("Linux") !== -1) {
-          this_file = xhr.responseText.split("\n");
         } else {
-          present_file_loadable = false;
+          this_file = xhr.responseText.split("\n");
         }
       } else {
         present_file_loadable = false;
