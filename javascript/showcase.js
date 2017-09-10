@@ -13,7 +13,7 @@ function load_present_file_for_code_reporter() {
   xhr.onreadystatechange = function(){
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        this_file = xhr.responseText.split("\r\n");
+        this_file = xhr.responseText.match(/[^\r?\n]+/g);
       } else {
         present_file_loadable = false;
       }
