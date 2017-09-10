@@ -20,7 +20,7 @@ function load_present_file_for_code_reporter() {
     }
   };
 }
-// Tester
+
 // Return an array containing the text of the input function.
 function load_function_text(funShun) {
   // Iterate through the present JS file's text.
