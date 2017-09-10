@@ -13,12 +13,7 @@ function load_present_file_for_code_reporter() {
   xhr.onreadystatechange = function(){
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        // What line ending to split on depends on the OS.
-        if (xhr.responseText.match(/\\r\\n/)) {
-          this_file = xhr.responseText.split("\r\n");
-        } else {
-          this_file = xhr.responseText.split("\n");
-        }
+        this_file = xhr.responseText.split("\r\n");
       } else {
         present_file_loadable = false;
       }
