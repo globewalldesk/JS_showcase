@@ -13,7 +13,12 @@ function load_present_file_for_code_reporter() {
   xhr.onreadystatechange = function(){
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        this_file = (xhr.responseText.split("\r\n") || xhr.responseText.split("\n"));
+        // What line ending to split on depends on the OS.
+        if (navigator.appVersion.indexOf("Win") !== -1) {
+          this_file = xhr.responseText.split("\r\n");
+        } else {
+          this_file = xhr.responseText.split("\n");
+        }
       } else {
         present_file_loadable = false;
       }
