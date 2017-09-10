@@ -33,12 +33,12 @@ function load_function_text(funShun) {
     // console.log(">>" + typeof line + ":" + line + "<<");     // This is all as expected.
     // if (line === "// Tester") console.log("Saw Tester");     // Console "should" show "Saw Tester". Never does.
     // if (line.match("}") ) console.log("Saw } anywhere");     // Console spots around 33 instances.
-    // if (line.match(/^}$/)) console.log("Saw } by itself");   // Console "should" show "Saw } by itself". Never does.
-    // if (line.match(/^\}$/)) console.log("Saw } by itself");  // Doesn't matter if you escape the }.
-    // if (line == '}') console.log("Saw } by itself");         // These don't work either...
-    // if (line === '}') console.log("Saw } by itself");
-    // if (line == "}") console.log("Saw } by itself");
-    // if (line === "}") console.log("Saw } by itself");        // ...none of these matches any of the this_file lines.
+    if (line.match(/^\}$/)) console.log("Saw } by itself");     // Console "should" show "Saw } by itself". Never does.
+    if (line.match(/^}$/)) console.log("Saw } by itself");      // Doesn't matter if you escape the }.
+    if (line == '}') console.log("Saw } by itself");            // These don't work either...
+    if (line === '}') console.log("Saw } by itself");
+    if (line == "}") console.log("Saw } by itself");
+    if (line === "}") console.log("Saw } by itself");           // ...none of these matches any of the this_file lines.
 
     // Start copying when 'function funShun' is spotted. (Start pushing from previous line.)
     if (line.match("function " + funShun)) {
@@ -47,7 +47,7 @@ function load_function_text(funShun) {
       copying_lines = true;
       line_num += 1;
     // Stop copying and return when '}' by itself is spotted.
-    } else if (copying_lines && line == "}") {
+    } else if (copying_lines && line.match(/^}$/)) {
       alert ("yo");
       // Add this line.
       current_function.push(line);
