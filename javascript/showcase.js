@@ -35,13 +35,14 @@ function load_function_text(funShun) {
       copying_lines = true;
       line_num += 1;
     // Stop copying and return when '}' by itself is spotted.
-    } else if (copying_lines && line == "}") {
+    } else if (copying_lines && line === "}") {
       // Add this line.
       current_function.push(line);
       // Stop copying when end of function is reached.
       copying_lines = false;
     } else {
-      if (copying_lines) current_function.push(line);
+      // Omits the lines that call codeReporter(); pushes all others.
+      if (copying_lines && !line.match(/codeReporter\("/)) current_function.push(line);
       line_num += 1;
     }
   });
@@ -87,7 +88,6 @@ function codeReporter(fun) {
 
 // Adds box-darkening on mouseover.
 function darkenBox(e) {
-  // codeReporter("darkenBox()");
   e.preventDefault();
   var target_box = ($(e.target).attr('id') ? $(e.target) : $(e.target).parent());
   $(target_box).css("border", "gray 1px solid");
@@ -95,7 +95,6 @@ function darkenBox(e) {
 
 // Removes box-darkening when leaving.
 function removeHighlights() {
-  // codeReporter("removeHiglights()");
   $(".edit-box, .edit-box > p").css({
     "border": ""
   });
@@ -171,8 +170,46 @@ function handleClickInBox(e) {
   if ($(box).find("textarea").length === 0) openForEditing(box);
 }
 
+// WIKIPEDIA INTERFACE METHODS
+
+// Accepts search term from user, searches Wikipedia API, and returns data from API.
+function executeWikipediaSearch(userSearch) {
+  codeReporter("executeWikipediaSearch()");
+  var searchQuery = wikifySearchTerm(userSearch);
+  $(document).ready(function(){
+    $.ajax({
+      type: "GET",
+      url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + searchQuery + "&callback=?",
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+        displayWikipediaData(data.parse.text["*"]);
+      },
+      error: handleWikipediaAPIError
+    });
+  });
+}
+
+function wikifySearchTerm(userSearch) {
+  codeReporter("wikifySearchTerm()");
+  return userSearch.replace(" ", "_")
+}
+
+function displayWikipediaData(data) {
+  codeReporter("displayWikipediaData()");
+  $("#wikipedia-article").css({
+    borderTop: "1px lightgray solid",
+    paddingTop: "20px"
+  }).html(data);
+}
+
+function handleWikipediaAPIError(msg) {
+  codeReporter("handleWikipediaAPIError()");
+  $("#wikipedia-article").text("Sorry, that didn't work. Error message: " + msg);
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// EVENT LISTENERS FOR event-box.
+// EVENT LISTENERS
 // Set-up for event listeners for event-box.
 $(".edit-box")
   .click(function(e) {
@@ -188,3 +225,18 @@ $(".edit-box")
                       eventReporter(e);
                       if (e.key === "Enter") saveOnEnter(e);
 });
+
+$("#wp-search-input")
+  .click(eventReporter)
+  .keypress(function(e) {
+                      eventReporter(e);
+                      if (e.key === "Enter") {
+                        executeWikipediaSearch($("#wp-search-input").val());
+                      }
+  });
+
+$("wp-search-button")
+  .click( function(e) {
+                      eventReporter(e);
+                      executeWikipediaSearch($("#wp-search-input").val());
+  });

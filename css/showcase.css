@@ -7,7 +7,10 @@
       font-size: 10px; }
 
   .hidden-xs {
-    display: none; } }
+    display: none; }
+
+  #wp-search-input {
+    width: auto; } }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .navbar-brand {
@@ -16,7 +19,13 @@
       font-size: inherit; }
 
   .hidden-xs {
-    display: inline; } }
+    display: inline; }
+
+  #wp-search-input {
+    width: 300px; }
+
+  .infobox {
+    clear: inherit; } }
 /* Medium devices (desktops, 992px and up) */
 /* Large devices (large desktops, 1200px and up) */
 /* TOP OF PAGE STUFF */
@@ -34,7 +43,7 @@
   padding: 4px 8px;
   border: 1px solid grey; }
   #box-row .box {
-    margin: 8px 0px;
+    margin: 8px 0;
     padding: 4px 8px;
     border: 1px solid lightgray;
     list-style: none;
@@ -47,5 +56,24 @@
   margin: 8px 0 0 0;
   padding: 4px 8px;
   cursor: pointer; }
+
+/* WIKIPEDIA SEARCH STUFF */
+#wikipedia-box {
+  margin: 20px 0;
+  border: double 1px black;
+  padding: 15px;
+  overflow: hidden; }
+
+#wp-search-form {
+  margin-bottom: 10px; }
+
+#wp-search-input {
+  margin-left: 15px; }
+
+.infobox {
+  float: right;
+  margin: 10px 0 10px 20px;
+  padding: 10px;
+  border: lightgray 1px solid; }
 
 /*# sourceMappingURL=showcase.css.map */
