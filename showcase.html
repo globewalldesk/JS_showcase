@@ -24,8 +24,14 @@
   <div class="container">
     <section>
       <div class="row" id="box-row">
-        <div id="event-box" class="box col-md-6">Click on a box below. View event info here.</div>
-        <div id="code-box" class="box col-md-6"></div>
+        <div id="event-box" class="box col-md-6">
+          <span class="float-right box-label">Events info</span>
+          <span id="event-box-content">Click on a box below. View event info here.</span>
+        </div>
+        <div id="code-box" class="box col-md-6">
+          <span class="float-right box-label">Code info</span>
+          <span id="code-box-content">Do something on the page. View the code here.</span>
+        </div>
       </div>
     </section>
   </div><!-- // top boxes // -->
@@ -34,21 +40,21 @@
   <div class="container">
     <section>
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 box-container" draggable="true">
           <div id="edit1" class="card edit-box">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
             et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.</p>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 box-container" draggable="true">
           <div id="edit2" class="card edit-box">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut labore
                 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                 aliquip ex ea commodo consequat.</p>
           </div>
         </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 box-container" draggable="true">
             <div id="edit3" class="card edit-box">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -66,7 +72,7 @@
         <form>
           <label for="wp-search-input">Fetch a Wikipedia article: </label>
           <input id="wp-search-input" placeholder="Title must be precise">
-          <button id="wp-search-button" class="btn btn-primary">Fetch!</button>
+          <button id="wp-search-button" class="btn btn-success btn-sm">Fetch!</button>
         </form>
       </div>
       <article id="wikipedia">
@@ -81,6 +87,10 @@
   <script
           src="http://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+  <script
+          src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+          integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

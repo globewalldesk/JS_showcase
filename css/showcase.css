@@ -46,10 +46,14 @@
     margin: 8px 0;
     padding: 4px 8px;
     border: 1px solid lightgray;
-    list-style: none;
-    word-break: break-all; }
-  #box-row #code-box {
-    font-size: 0.8em; }
+    list-style: none; }
+    #box-row .box .box-label {
+      margin-left: 5px;
+      font-weight: bold;
+      color: orange;
+      float: right; }
+  #box-row #event-box {
+    background-color: #ededed; }
 
 /* EDIT BOXES ETC. */
 .edit-box {
@@ -66,14 +70,22 @@
 
 #wp-search-form {
   margin-bottom: 10px; }
+  #wp-search-form label {
+    margin-right: 15px; }
 
 #wp-search-input {
-  margin-left: 15px; }
+  vertical-align: middle; }
+
+#wp-search-button {
+  margin: 3px 0; }
+
+table {
+  border-collapse: inherit; }
 
 .infobox {
   float: right;
   margin: 10px 0 10px 20px;
-  padding: 10px;
+  padding: 10px !important;
   border: lightgray 1px solid; }
 
 /*# sourceMappingURL=showcase.css.map */
